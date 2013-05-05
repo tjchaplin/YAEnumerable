@@ -1,26 +1,34 @@
 {
-  "name": "YAEnumerable",
+  "name": "yaenumerable",
   "description": "Yet Another Enumerable Framework",
   "version": "0.0.1",
-  "author": {
-    "name": "Tim Chaplin",
-    "email": "tim.chaplin@ticktockdevelopment.com"
-  },
+  "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/should.js.git"
+    "url": "https://github.com/tjchaplin/YAEnumerable.git"
   },
-  "homepage": "https://github.com/visionmedia/should.js",
+  "homepage": "https://github.com/tjchaplin/YAEnumerable.git",
   "devDependencies": {
-    "mocha": "*"
+    "mocha": "*",
+    "should": "*"
+  },
+  "browserDependencies":{
   },
   "keywords": [
     "Enumerable",
-    "Array"
+    "Array",
+    "linq"
   ],
-  "main": "./lib/Enumerable.js",
   "engines": {
     "node": ">= 0.2.0"
   },
-  "_id": "should@0.0.1",
+  "main": "./lib/Enumerable.js",
+  "directories": {
+    "test": "tests",
+    "lib" : "lib"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "license": "MIT"
 }
