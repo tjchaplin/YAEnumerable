@@ -1,6 +1,6 @@
 #YAEnumerable
 
-  Yet Another Enumerable Javas Script Framework
+  Yet Another Enumerable Java Script Framework
 
 [![Build Status](https://travis-ci.org/tjchaplin/YAEnumerable.png)](https://travis-ci.org/tjchaplin/YAEnumerable)
 
