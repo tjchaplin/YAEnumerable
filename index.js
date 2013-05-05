@@ -1,1 +1,1 @@
-module.exports	 = require("./lib/Enumerable.js");
+module.exports = require("./lib/Enumerable.js");
