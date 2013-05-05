@@ -4,6 +4,10 @@
 
 [![Build Status](https://travis-ci.org/tjchaplin/YAEnumerable.png)](https://travis-ci.org/tjchaplin/YAEnumerable)
 
+##Purpose
+
+  To create and maintain and linq type JS framework.  See Credits/Other Frameworks for alternatives.
+
 ##Install
 
   `npm install YAEnumerable`
@@ -19,6 +23,7 @@
   For additional examples see the tests.  To run them:
   `npm test`
   
-##Credits
+##Credits/Other Frameworks
   
-  lukesmith - https://github.com/lukesmith/enumerablejs.git
+  * [enumerablejs - lukesmith's very comprehensive framework](https://github.com/lukesmith/enumerablejs.git)
+  * [enumerable - VisionMedia TJ Holowaychuk](https://github.com/component/enumerable.git)
