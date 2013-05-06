@@ -6,7 +6,7 @@
 
 ##Purpose
 
-  To create and maintain and linq type JS framework.  See Credits/Other Frameworks for alternatives.
+  To create and maintain a linq type JS framework.  See Credits/Other Frameworks for alternatives.
 
 ##Install
 
