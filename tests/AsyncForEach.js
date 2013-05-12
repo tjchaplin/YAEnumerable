@@ -8,7 +8,7 @@ describe("When using AsyncForEach", function(){
 		var numberProcessed = 0;
 		var itemsToProcess = [1,2,3];
 
-		var longProcess = function(item, index, onLongProcessComplete){
+		var longProcess = function(item, onLongProcessComplete){
 			setTimeout(function(){
 				numberProcessed++;
 				onLongProcessComplete();
@@ -26,7 +26,7 @@ describe("When using AsyncForEach", function(){
 	it("Should be able to execute an asnync action on each item in an array and call back to the results", function(onComplete){
 		var itemsToProcess = [1,2,3];
 
-		var itemPlusOneAsyncMethod = function(item, index, onLongProcessComplete){
+		var itemPlusOneAsyncMethod = function(item, onLongProcessComplete){
 			setTimeout(function(){ onLongProcessComplete(++item);} , 1000);
 		};
 
@@ -36,6 +36,24 @@ describe("When using AsyncForEach", function(){
 					sum.should.be.equal(9);
 					onComplete();
 				});
+
+	});
+
+	it("Should be able to get index of async item for each item", function(onComplete){
+		var itemsToProcess = [1,2,3];
+
+		var longProcess = function(item, onLongProcessComplete,index){
+			setTimeout(function(){
+				item.should.be.equal(itemsToProcess[index])
+				onLongProcessComplete();
+			},1000)
+		};
+
+		Enumerable.FromArray(itemsToProcess)
+				.AsyncForEach(longProcess,
+								function(results){ 
+									onComplete();
+								});
 
 	});
 });
