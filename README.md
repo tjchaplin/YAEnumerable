@@ -11,7 +11,7 @@
 ##Install
 
   ```
-  npm install YAEnumerable
+  npm install yaenumerable
   ```
 
 ##Example
