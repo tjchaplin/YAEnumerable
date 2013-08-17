@@ -19,113 +19,113 @@ Each selector will at a minimum return an item and the index of the item.
 The index is always the last item returned in the callback.  See tests for additional examples.
 
 
-###Where Condition
+###where Condition
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [{a:1},{a:2},{a:3}];
   
   //aValues will now be [{a:2},{a:3}]
-  var aValues = Enumerable.FromArray(anArray)
-                          .Where(function(item){return item.a > 1;})
-                          .ToArray();
+  var aValues = enumerable.fromArray(anArray)
+                          .where(function(item){return item.a > 1;})
+                          .toArray();
   ```
 
-###Select
+###select
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [{a:1},{a:2},{a:3}];
   
   //aValues will now be [1,2,3]
-  var aValues = Enumerable.FromArray(anArray)
-                          .Select( function(item){ return item.a; } )
-                          .ToArray();
+  var aValues = enumerable.fromArray(anArray)
+                          .select( function(item){ return item.a; } )
+                          .toArray();
   ```
 
-###SelectMany
+###selectMany
   Allows you to flatten an array
   
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [ {a:[1,2,3]}, {a:[4,5,6]}, {a:[7,8,9]} ];
   
   //Will return: [1,2,3,4,5,6,7,8,9]
-  var flattenedArray = Enumerable.SelectMany(function(item){return item.a})
-                                 .ToArray();
+  var flattenedArray = enumerable.selectMany(function(item){return item.a})
+                                 .toArray();
   ```
 
-###First
+###first
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [{a:1},{a:2},{a:3}];
   
   //if no function specified will return first item:{a:1}
-  var firstObject = Enumerable.FromArray(anArray).First();
+  var firstObject = enumerable.fromArray(anArray).first();
   
   //Since function is specfied to return a, will return 1
-  var firstA = Enumerable.FromArray(anArray)
-                            .First(function(item){return item.a;});
+  var firstA = enumerable.fromArray(anArray)
+                            .first(function(item){return item.a;});
   ```
 
-###Sum
+###sum
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
 
-  //Sum without a selector
+  //sum without a selector
   //In this case it will return 6
-  var sum = Enumerable.FromArray([1,2,3]).Sum();
+  var sum = enumerable.fromArray([1,2,3]).sum();
 
   //When specified with a selector will return the sum of that item:
   //In this case it will return 6
-  var sumOfA = Enumerable.FromArray([{a:1},{a:2},{a:3}])
-                            .Sum(function(item){return item.a;});
+  var sumOfA = enumerable.fromArray([{a:1},{a:2},{a:3}])
+                            .sum(function(item){return item.a;});
   ```
 
-###Count
-  Count items in enumerable.  Example use is with an enumerable
+###count
+  count items in enumerable.  Example use is with an enumerable
   
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [1,2,3];
   
   //Will return 2
-  var count = Enumerable.FromArray([1,2,3])
-                        .Where(function(item){return item > 1;})
-                        .Count();
+  var count = enumerable.fromArray([1,2,3])
+                        .where(function(item){return item > 1;})
+                        .count();
   ```
 
-###Any
+###any
   Determines if any items meet a condtion
   
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [1,2,3];
   
   //Will return true
-  var hasItemGreaterThan1 = Enumerable.FromArray([1,2,3])
-                        .Any(function(item){return item > 1;});
+  var hasItemGreaterThan1 = enumerable.fromArray([1,2,3])
+                        .any(function(item){return item > 1;});
   
   //Can use with a selector as well
-  var hasItemAGreaterThan1 = Enumerable.FromArray([{a:1},{a:2},{a:3}])
-                        .Any(function(item){return item.a > 1;});
+  var hasItemAGreaterThan1 = enumerable.fromArray([{a:1},{a:2},{a:3}])
+                        .any(function(item){return item.a > 1;});
   
   ```
 
-###ForEach
+###forEach
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [{a:1},{a:2},{a:3}];
   
   //aValues will now be [1,2,3]
-  var aValues = Enumerable.FromArray(anArray)
-                          .ForEach( function(item){/*Do something useful*/})
-                          .ToArray();
+  var aValues = enumerable.fromArray(anArray)
+                          .forEach( function(item){/*Do something useful*/})
+                          .toArray();
   ```
 
-###AsyncForEach
+###asyncForEach
   Allows you to make async calls on each item in an array and get the results of all calls when each call is complete.
   
   ```javascript
-  var Enumerable = require("yaenumerable");
+  var enumerable = require("yaenumerable");
   var anArray = [{a:1},{a:2},{a:3}];
 
 	var longProcess = function(item, onLongProcessComplete){
@@ -134,8 +134,8 @@ The index is always the last item returned in the callback.  See tests for addit
     onLongProcessComplete(result);
 	};
 
-	Enumerable.FromArray(anArray)
-      			.AsyncForEach(longProcess,
+	enumerable.fromArray(anArray)
+      			.asyncForEach(longProcess,
                           function(results){ 
                             //results is an array with each updated item
                             onComplete(results);
