@@ -4,6 +4,27 @@ var Enumerable = require("../lib/Enumerable.js");
 describe("When using AsyncForEach", function(){
 	this.timeout(10000);
 
+	it("Should be able to execute an asnync action when no onComplete function defined", function(onComplete){
+		var numberProcessed = 0;
+		var itemsToProcess = [1,2,3];
+
+		var longProcess = function(item){
+			setTimeout(function(){
+				numberProcessed++;
+				
+				if(numberProcessed === itemsToProcess.length)
+				{
+					numberProcessed.should.be.equal(itemsToProcess.length);
+					onComplete();
+				}
+			},1000)
+		};
+
+		Enumerable.FromArray(itemsToProcess)
+					.AsyncForEach(longProcess);
+
+	});
+
 	it("Should be able to execute an asnync action on each item in an array", function(onComplete){
 		var numberProcessed = 0;
 		var itemsToProcess = [1,2,3];
