@@ -1,7 +1,7 @@
 var should = require("should");
-var Enumerable = require("../lib/Enumerable.js");
+var yaenumerable = require("../lib/yaenumerable.js");
 
-describe("When using AsyncForEach", function(){
+describe("When using asyncForEach", function(){
 	this.timeout(10000);
 
 	it("Should be able to execute an asnync action when no onComplete function defined", function(onComplete){
@@ -20,8 +20,8 @@ describe("When using AsyncForEach", function(){
 			},1000)
 		};
 
-		Enumerable.FromArray(itemsToProcess)
-					.AsyncForEach(longProcess);
+		yaenumerable.fromArray(itemsToProcess)
+					.asyncForEach(longProcess);
 
 	});
 
@@ -36,8 +36,8 @@ describe("When using AsyncForEach", function(){
 			},1000)
 		};
 
-		Enumerable.FromArray(itemsToProcess)
-				.AsyncForEach(longProcess,function(results){
+		yaenumerable.fromArray(itemsToProcess)
+				.asyncForEach(longProcess,function(results){
 					numberProcessed.should.be.equal(itemsToProcess.length);
 					onComplete();
 				});
@@ -51,9 +51,9 @@ describe("When using AsyncForEach", function(){
 			setTimeout(function(){ onLongProcessComplete(++item);} , 1000);
 		};
 
-		Enumerable.FromArray(itemsToProcess)
-				.AsyncForEach(itemPlusOneAsyncMethod,function(results){
-					var sum = Enumerable.FromArray(results).Sum();
+		yaenumerable.fromArray(itemsToProcess)
+				.asyncForEach(itemPlusOneAsyncMethod,function(results){
+					var sum = yaenumerable.fromArray(results).sum();
 					sum.should.be.equal(9);
 					onComplete();
 				});
@@ -70,8 +70,8 @@ describe("When using AsyncForEach", function(){
 			},1000)
 		};
 
-		Enumerable.FromArray(itemsToProcess)
-				.AsyncForEach(longProcess,
+		yaenumerable.fromArray(itemsToProcess)
+				.asyncForEach(longProcess,
 								function(results){ 
 									onComplete();
 								});
@@ -87,8 +87,8 @@ describe("When using AsyncForEach", function(){
 			},1000)
 		};
 
-		Enumerable.FromArray(itemsToProcess)
-				.AsyncForEach(errorProcess,
+		yaenumerable.fromArray(itemsToProcess)
+				.asyncForEach(errorProcess,
 								function(results){}, 
 								function(error){
 									error.should.be.equal(errorMessage);

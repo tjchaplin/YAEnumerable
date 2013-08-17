@@ -1,22 +1,22 @@
 var should = require('should');
-var Enumerable = require("../");
+var yaenumerable = require("../lib/yaenumerable.js");
 
-describe('When using a Where condition',function(){
+describe('When using a where condition',function(){
 	var array = ["1","2","3"];
-	var enumerable = Enumerable.FromArray(array);
+	var enumerable = yaenumerable.fromArray(array);
 
 	it("should return empty enumerable when no condition ",function(){
-		var result = enumerable.Where();
+		var result = enumerable.where();
 		result.sequence.length.should.be.eql(0);
 	});
 
 	it("should return enumerable with all matching items when condition is met",function(){
-		var result = enumerable.Where(function(item){return typeof item === "string"});
+		var result = enumerable.where(function(item){return typeof item === "string"});
 		result.sequence.length.should.be.eql(3);
 	});
 
 	it("should return empty enumerable when condition is not met",function(){
-		var result = enumerable.Where(function(item){return false});
+		var result = enumerable.where(function(item){return false});
 		result.sequence.length.should.be.eql(0);
 	});
 
