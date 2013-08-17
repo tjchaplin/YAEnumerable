@@ -1,7 +1,7 @@
 {
   "name": "yaenumerable",
   "description": "Yet Another Enumerable Framework",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Tim Chaplin <tim.chaplin@ticktockdevelopment.com>",
   "repository": {
     "type": "git",
